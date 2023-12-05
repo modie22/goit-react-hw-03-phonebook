@@ -8,10 +8,10 @@ import ContactList from './List/List';
 class App extends Component {
   state = {
     contacts: [
-      { id: shortid.generate(), name: 'Rosie Simpson', number: '+380675226500' },
-      { id: shortid.generate(), name: 'Hermione Kline', number: '+380675666599' },
-      { id: shortid.generate(), name: 'Eden Clements', number: '+380675476588' },
-      { id: shortid.generate(), name: 'Annie Copeland', number: '+380675476500' },
+      { id: shortid.generate(), name: 'Rosie Simpson', number: '380675226500' },
+      { id: shortid.generate(), name: 'Hermione Kline', number: '380675666599' },
+      { id: shortid.generate(), name: 'Eden Clements', number: '380675476588' },
+      { id: shortid.generate(), name: 'Annie Copeland', number: '380675476500' },
     ],
     filter: '',
   };
@@ -37,7 +37,7 @@ class App extends Component {
       alert("Enter the contact's name and number phone!");
     } else if ((contact.number).toString().length!==12) {
       alert(`The number must contain 12 numbers!`);
-    } else if (!/^(\+38)?0[0-9]{9}$/g.test(number)) {
+    } else if (!/^(38)?0[0-9]{9}$/g.test(number)) {
       alert('The phone number must start with 380!');
     } else {
       this.setState(({ contacts }) => ({
