@@ -8,10 +8,10 @@ import ContactList from './List/List';
 class App extends Component {
   state = {
     contacts: [
-      { id: shortid.generate(), name: 'Rosie Simpson', number: '459-12-56' },
-      { id: shortid.generate(), name: 'Hermione Kline', number: '443-89-12' },
-      { id: shortid.generate(), name: 'Eden Clements', number: '645-17-79' },
-      { id: shortid.generate(), name: 'Annie Copeland', number: '227-91-26' },
+      { id: shortid.generate(), name: 'Rosie Simpson', number: '+380675226500' },
+      { id: shortid.generate(), name: 'Hermione Kline', number: '+380675666599' },
+      { id: shortid.generate(), name: 'Eden Clements', number: '+380675476588' },
+      { id: shortid.generate(), name: 'Annie Copeland', number: '+380675476500' },
     ],
     filter: '',
   };
@@ -24,7 +24,7 @@ class App extends Component {
     };
 
     const { contacts } = this.state;
-
+    
     if (
       contacts.find(
         contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -35,8 +35,10 @@ class App extends Component {
       alert(`${number} is already in contacts.`);
     } else if (name.trim() === '' || number.trim() === '') {
       alert("Enter the contact's name and number phone!");
+    } else if ((contact.number).toString().length!==12) {
+      alert(`The number must contain 12 numbers!`);
     } else if (!/^(\+38)?0[0-9]{9}$/g.test(number)) {
-      alert('Enter the correct number phone!');
+      alert('The phone number must start with 380!');
     } else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],
