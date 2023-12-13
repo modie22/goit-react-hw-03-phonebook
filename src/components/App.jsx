@@ -11,11 +11,13 @@ class App extends Component {
       { id: shortid.generate(), name: 'Rosie Simpson', number: '380675226500' },
       { id: shortid.generate(), name: 'Hermione Kline', number: '380675666599' },
       { id: shortid.generate(), name: 'Eden Clements', number: '380675476588' },
-      { id: shortid.generate(), name: 'Annie Copeland', number: '380675476500' },
+      { id: shortid.generate(), name: 'Annie Copeland', number: '380675476500' }, 
     ],
     filter: '',
   };
-
+  getContactToLocal = () => {
+    localStorage.setItem('contactLocal',JSON.stringify(this.state.contacts));
+  }
   addContact = ({ name, number }) => {
     const contact = {
       id: shortid.generate(),
@@ -64,6 +66,15 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
+  componentDidUpdate(){
+    this.getContactToLocal();
+  }
+  componentDidMount(){
+    if(JSON.parse(localStorage.getItem('contactLocal')).length)
+     this.setState({
+      contacts:JSON.parse(localStorage.getItem('contactLocal')),
+    })
+  }
 
   render() {
     const { filter, contacts } = this.state;
