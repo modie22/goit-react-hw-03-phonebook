@@ -8,10 +8,6 @@ import ContactList from './List/List';
 class App extends Component {
   state = {
     contacts: [
-      { id: shortid.generate(), name: 'Rosie Simpson', number: '380675226500' },
-      { id: shortid.generate(), name: 'Hermione Kline', number: '380675666599' },
-      { id: shortid.generate(), name: 'Eden Clements', number: '380675476588' },
-      { id: shortid.generate(), name: 'Annie Copeland', number: '380675476500' }, 
     ],
     filter: '',
   };
@@ -70,10 +66,11 @@ class App extends Component {
     this.getContactToLocal();
   }
   componentDidMount(){
-    if(JSON.parse(localStorage.getItem('contactLocal')).length)
+    console.log(localStorage.getItem('contactLocal'));
+     if(JSON.parse(localStorage.getItem('contactLocal') !== null ))
      this.setState({
       contacts:JSON.parse(localStorage.getItem('contactLocal')),
-    })
+    }) 
   }
 
   render() {
