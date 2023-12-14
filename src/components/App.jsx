@@ -66,7 +66,6 @@ class App extends Component {
     this.getContactToLocal();
   }
   componentDidMount(){
-    console.log(localStorage.getItem('contactLocal'));
      if(JSON.parse(localStorage.getItem('contactLocal') !== null ))
      this.setState({
       contacts:JSON.parse(localStorage.getItem('contactLocal')),
