@@ -62,11 +62,12 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-  componentDidUpdate(){
+  componentDidUpdate(prevProps,prevState){
+    if(prevState.contacts.length!==this.state.contacts.length)
     this.getContactToLocal();
   }
   componentDidMount(){
-     if(JSON.parse(localStorage.getItem('contactLocal') !== null ))
+     if(JSON.parse(localStorage.getItem('contactLocal') !== null ) && (JSON.parse(localStorage.getItem('contactLocal'))).length > 0 )
      this.setState({
       contacts:JSON.parse(localStorage.getItem('contactLocal')),
     }) 
